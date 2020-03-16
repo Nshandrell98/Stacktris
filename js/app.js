@@ -20,7 +20,7 @@ function start(){
         matrix: null,
         score: 0
     }
-
+    
     function arenaSweep(){
         let rowCount = 1;
         outer:  for(let y = arena.length - 1; y > 0; --y){
@@ -35,7 +35,7 @@ function start(){
             player.score += rowCount * 10;
             rowCount *= 2;
         }
-
+        
     }
     function collide(arena, player){
         const [n, s] = [player.matrix, player.pos];
@@ -43,24 +43,24 @@ function start(){
             for(let x = 0; x < n[y].length; x++){
                 if(n[y][x] !==0 && 
                     (arena[y + s.y] && 
-                    arena[y + s.y][x + s.x]) !== 0){
-                    return true;
+                        arena[y + s.y][x + s.x]) !== 0){
+                            return true;
+                        }
+                    }
                 }
+                return false;
             }
-        }
-        return false;
-    }
-
-    function createMatrix(w, h){
-        const matrix = [];
-        while (h--){
-            matrix.push(new Array(w).fill(0));
-        }
-        return matrix;
-    }
-
-    function createPiece(type, color){
-        if(type === 'T'){
+            
+            function createMatrix(w, h){
+                const matrix = [];
+                while (h--){
+                    matrix.push(new Array(w).fill(0));
+                }
+                return matrix;
+            }
+            
+            function createPiece(type){
+                if(type === 'T'){
             return [
                 [0, 0, 0],
                 [7, 7, 7],
@@ -110,13 +110,13 @@ function start(){
             ];
         }
     }
-
+    
     function draw(){
         context.fillStyle = '#000';
         context.fillRect(0, 0, canvas.width, canvas.height);
         drawMatrix(arena, {x:0, y:0});
         drawMatrix(player.matrix, player.pos );
-
+        
     }
     function drawMatrix(matrix, offset){
         matrix.forEach((row, y) => {
@@ -138,7 +138,7 @@ function start(){
             })
         })
     }
-
+    
     function playerDrop(){
         player.pos.y++;
         if(collide(arena, player)){
@@ -150,7 +150,7 @@ function start(){
         }
         dropCounter = 0;
     }
-
+    
     function playerMove(dir){
         player.pos.x += dir;
         if (collide(arena, player)){
@@ -167,7 +167,7 @@ function start(){
             player.score = 0;
             updateScore();
         }
-
+        
     }
     function playerRotate(dir){
         const pos = player.pos.x;
@@ -202,12 +202,12 @@ function start(){
             matrix.reverse();
         }
     }
-
+    
     let dropCounter = 0;
-    let dropInterval = 1000;
-
+    var dropInterval = 900;
+    
     let lastTime = 0;
-
+    
     function update(time= 0){
         const deltaTime =  time- lastTime;
         lastTime = time;
@@ -219,20 +219,32 @@ function start(){
         requestAnimationFrame(update);
     }
     const arena = createMatrix(12, 20);
-
+    
     const colors = [
         null,
-        'red',
+        '#CC1100	',
         'blue',
-        'purple',
-        'orange',
-        'pink',
-        'green',
+        '#9400D3',
+        '#ED9121',
+        '#E0427F',
+        '#9CCB19',
         'yellow'
     ]
-
+    
     function updateScore(){
         document.getElementById("score").textContent = player.score;
+    }
+    function speedUp(){
+        if(player.score >= 10){
+            let dropInterval = 750;
+
+        }
+        else if (player.score >= 30){
+            let dropInterval = 500;
+        }
+        else if (player.score >= 50){
+            let dropInterval = 300;
+        }
     }
     document.addEventListener('keydown', event =>{
         if (event.keyCode === 37){
@@ -243,7 +255,7 @@ function start(){
             playerMove(1);
         }
         else if (event.keyCode === 40){
-        playerDrop();
+            playerDrop();
         }
         else if (event.keyCode === 81){
             playerRotate(-1);
@@ -253,10 +265,11 @@ function start(){
         }  
     })
     //there are 20 lines in the arena
-
+    
     //  arena[19].fill(1);
-
+    
     updateScore()
     playerReset()
     update();
+    document.getElementById('start').removeEventListener('click', start);
 }
