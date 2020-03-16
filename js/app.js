@@ -218,13 +218,13 @@ function start(){
     }
     
     let dropCounter = 0;
-    var dropInterval = 900;
+    var dropInterval = 800;
 
     if(player.score >= 10){
-        dropInterval = 750;
+        dropInterval = 550;
     }
     else if (player.score >= 30){
-        dropInterval = 500;
+        dropInterval = 400;
     }
     else if (player.score >= 50){
         dropInterval = 300;
