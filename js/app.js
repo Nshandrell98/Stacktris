@@ -61,7 +61,7 @@ function start(){
             
             function createPiece(type){
                 if(type === 'T'){
-            return [
+                    return [
                 [0, 0, 0],
                 [7, 7, 7],
                 [0, 7, 0]
@@ -111,6 +111,16 @@ function start(){
         }
     }
     
+    const colors = [
+        null,
+        '#CC1100	',
+        'blue',
+        '#9400D3',
+        '#ED9121',
+        '#E0427F',
+        '#00ff7f',
+        'yellow'
+    ]
     function draw(){
         context.fillStyle = '#000';
         context.fillRect(0, 0, canvas.width, canvas.height);
@@ -129,6 +139,9 @@ function start(){
         });
     }
 
+    function endgame(){
+
+    }
     function merge(arena, player){
         player.matrix.forEach((row, y) => {
             row.forEach((value, x)=>{
@@ -166,6 +179,7 @@ function start(){
             arena.forEach(row => row.fill(0));
             player.score = 0;
             updateScore();
+            endgame()
         }
         
     }
@@ -205,6 +219,16 @@ function start(){
     
     let dropCounter = 0;
     var dropInterval = 900;
+
+    if(player.score >= 10){
+        dropInterval = 750;
+    }
+    else if (player.score >= 30){
+        dropInterval = 500;
+    }
+    else if (player.score >= 50){
+        dropInterval = 300;
+    }
     
     let lastTime = 0;
     
@@ -220,32 +244,12 @@ function start(){
     }
     const arena = createMatrix(12, 20);
     
-    const colors = [
-        null,
-        '#CC1100	',
-        'blue',
-        '#9400D3',
-        '#ED9121',
-        '#E0427F',
-        '#9CCB19',
-        'yellow'
-    ]
     
     function updateScore(){
         document.getElementById("score").textContent = player.score;
     }
-    function speedUp(){
-        if(player.score >= 10){
-            let dropInterval = 750;
 
-        }
-        else if (player.score >= 30){
-            let dropInterval = 500;
-        }
-        else if (player.score >= 50){
-            let dropInterval = 300;
-        }
-    }
+ 
     document.addEventListener('keydown', event =>{
         if (event.keyCode === 37){
             playerMove(-1);

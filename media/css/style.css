@@ -1,10 +1,10 @@
 html, .wrapper{
-    background: rgb(80, 78, 78);
-    color: white;
+    background: rgb(53, 45, 71);
+    color: rgb(236, 204, 24);
     text-align: center;
 }
 canvas{
-    border: solid 5px rgb(175, 153, 27);
+    border: inset 5px rgb(149, 130, 21);
 }
 .wrapper{
     margin-top: 75px;
@@ -12,4 +12,12 @@ canvas{
 }
 .main{
     margin-top: 100px;
+}
+button{
+    border-radius: 5px;
+    border: solid 1px rgb(39, 33, 53);
+    padding: 5px;
+    background-color: rgb(77, 66, 9);
+    color: antiquewhite;
+    /* color: rgb(53, 45, 71); */
 }
