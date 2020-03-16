@@ -1,0 +1,15 @@
+html, .wrapper{
+    background: rgb(80, 78, 78);
+    color: white;
+    text-align: center;
+}
+canvas{
+    border: solid 5px rgb(175, 153, 27);
+}
+.wrapper{
+    margin-top: 75px;
+    font-family: 'Arvo', serif;
+}
+.main{
+    margin-top: 100px;
+}

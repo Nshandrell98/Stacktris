@@ -1,11 +1,15 @@
 document.getElementById('start').addEventListener('click', start)
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
-function start(){
-    var audio = new Audio( "media/tetrisMusic.mp3" );
-    audio.play();
-    context.scale(20, 20);
 
+function start(){
+    function music(){
+        var audio = new Audio( "media/tetrisMusic.mp3" );
+        audio.play();
+        audio.loop = true;
+    }
+    music()
+    context.scale(20, 20);
     const matrix = [
         [0, 0, 0],
         [1, 1, 1],
