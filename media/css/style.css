@@ -40,3 +40,18 @@ button{
 .rotateBtn{
     margin: 15px 0;
 }
+@media screen and (max-width: 800px) {
+    .wrapper{
+        margin-top: 20px;
+        font-family: 'Arvo', serif;
+    }
+    .main{
+        margin-top: 10px;
+    }
+    #score{
+        margin-bottom: 15px;
+    }
+    #start{
+        margin-bottom: 10px;
+    }
+  }
