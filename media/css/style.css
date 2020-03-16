@@ -6,12 +6,23 @@ html, .wrapper{
 canvas{
     border: inset 5px rgb(149, 130, 21);
 }
+ul,li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+li{
+    margin-bottom: 10px;
+}
 .wrapper{
     margin-top: 75px;
     font-family: 'Arvo', serif;
 }
 .main{
     margin-top: 100px;
+}
+#start{
+    margin-bottom: 20px;
 }
 button{
     border-radius: 5px;
@@ -20,4 +31,9 @@ button{
     background-color: rgb(77, 66, 9);
     color: antiquewhite;
     /* color: rgb(53, 45, 71); */
+}
+
+
+.rotateBtn{
+    margin: 15px 0;
 }

@@ -249,12 +249,30 @@ function start(){
         document.getElementById("score").textContent = player.score;
     }
 
- 
+    
+    
+
+    document.addEventListener('swiped-right', event =>{
+        playerMove(1);  
+    })
+    document.addEventListener('swiped-left', event =>{
+        playerMove(-1);  
+    })
+    document.addEventListener('swiped-down', event =>{
+        playerMove(-1);  
+    })
+    document.getElementById('leftR').addEventListener('click', event =>{
+        playerRotate(-1);
+    })
+    document.getElementById('rightR').addEventListener('click', event =>{
+        playerRotate(1);
+    })
+    
     document.addEventListener('keydown', event =>{
         if (event.keyCode === 37){
             playerMove(-1);
         }
-        else if (event.keyCode === 39){
+        else if (event.keyCode === 39 ){
             
             playerMove(1);
         }
