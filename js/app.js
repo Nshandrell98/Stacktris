@@ -259,7 +259,7 @@ function start(){
         playerMove(-1);  
     })
     document.addEventListener('swiped-down', event =>{
-        playerMove(-1);  
+        playerDrop();  
     })
     document.getElementById('leftR').addEventListener('click', event =>{
         playerRotate(-1);
