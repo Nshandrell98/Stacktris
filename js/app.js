@@ -295,3 +295,7 @@ function start(){
     update();
     document.getElementById('start').removeEventListener('click', start);
 }
+
+
+/* I do not want to take full credit for this game because this youtube video was a big help
+https://www.youtube.com/watch?v=H2aW5V46khA */
