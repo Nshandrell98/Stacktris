@@ -9,6 +9,11 @@ function start(){
         audio.loop = true;
     }
     music()
+    alert(" Arrow keys move right and left, 'Q' rotates right and 'W' rotates left, and Swipe right and left to move on Touch Screen,  Enjoy!!")
+    
+    var arena = createMatrix(12, 20);
+    console.log(arena);
+    
 
     context.scale(20, 20);
     const matrix = [
@@ -221,7 +226,7 @@ function start(){
     var dropInterval = 800;
     
     if(player.score >= 10){
-        dropInterval = 550;
+        dropInterval = 400;
     }
     else if (player.score >= 30){
         dropInterval = 400;
@@ -242,7 +247,6 @@ function start(){
         draw();
         requestAnimationFrame(update);
     }
-    const arena = createMatrix(12, 20);
     
     
     function updateScore(){
