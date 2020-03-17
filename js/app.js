@@ -3,12 +3,13 @@ const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
 
 function start(){
+    var audio = new Audio( "media/tetrisMusic.mp3" );
     function music(){
-        var audio = new Audio( "media/tetrisMusic.mp3" );
         audio.play();
         audio.loop = true;
     }
     music()
+
     context.scale(20, 20);
     const matrix = [
         [0, 0, 0],
@@ -43,28 +44,28 @@ function start(){
             for(let x = 0; x < n[y].length; x++){
                 if(n[y][x] !==0 && 
                     (arena[y + s.y] && 
-                        arena[y + s.y][x + s.x]) !== 0){
-                            return true;
-                        }
-                    }
+                arena[y + s.y][x + s.x]) !== 0){
+                    return true;
                 }
-                return false;
             }
-            
-            function createMatrix(w, h){
-                const matrix = [];
-                while (h--){
-                    matrix.push(new Array(w).fill(0));
-                }
-                return matrix;
-            }
-            
-            function createPiece(type){
-                if(type === 'T'){
-                    return [
-                [0, 0, 0],
-                [7, 7, 7],
-                [0, 7, 0]
+        }
+        return false;
+    }
+    
+    function createMatrix(w, h){
+        const matrix = [];
+        while (h--){
+            matrix.push(new Array(w).fill(0));
+        }
+        return matrix;
+    }
+    
+    function createPiece(type){
+        if(type === 'T'){
+            return [
+        [0, 0, 0],
+        [7, 7, 7],
+        [0, 7, 0]
             ];
         }
         else if (type === 'O'){
@@ -179,7 +180,6 @@ function start(){
             arena.forEach(row => row.fill(0));
             player.score = 0;
             updateScore();
-            endgame()
         }
         
     }
@@ -219,7 +219,7 @@ function start(){
     
     let dropCounter = 0;
     var dropInterval = 800;
-
+    
     if(player.score >= 10){
         dropInterval = 550;
     }
@@ -248,10 +248,10 @@ function start(){
     function updateScore(){
         document.getElementById("score").textContent = player.score;
     }
-
     
     
-
+    
+    
     document.addEventListener('swiped-right', event =>{
         playerMove(1);  
     })
@@ -286,6 +286,19 @@ function start(){
             playerRotate(1);
         }  
     })
+    function pause(){
+        audio.pause();
+        audio.currentTime = 0;
+    }
+
+    document.getElementById('pause').addEventListener('click', pause);
+
+    function resume(){
+        audio.play();
+        audio.currentTime = 0;
+    }
+
+    document.getElementById('resume').addEventListener('click', resume)
     //there are 20 lines in the arena
     
     //  arena[19].fill(1);
